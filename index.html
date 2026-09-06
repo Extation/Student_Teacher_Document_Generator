@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Document Generator</title>
+    <!-- Google Fonts: Inter and Great Vibes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Herr+Von+Muellerhoff&family=Mr+De+Haviland&family=Mrs+Saint+Delafield&family=Libre+Barcode+39&display=swap"
+        rel="stylesheet">
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- App Container -->
+    <div class="app-container">
+
+        <!-- Left Pane: Controls & Forms -->
+        <aside class="control-panel no-print">
+            <header class="panel-header">
+                <div style="font-size: 0.8rem; color: var(--primary-color); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Made by ss_shabu</div>
+                <h1>Student & Teacher Document Generator</h1>
+                <p>Professional Documents 2026</p>
+            </header>
+
+            <!-- Navigation Tabs & Global Settings -->
+            <div style="border-bottom: 1px solid var(--border-color); background-color: #f8fafc;">
+                <div style="display: flex; align-items: center; justify-content: space-between; padding-right: 1rem;">
+                    <nav class="module-tabs" style="border-bottom: none; flex: 1;">
+                        <button class="tab-btn active" data-target="student-module">Student</button>
+                        <button class="tab-btn" data-target="teacher-module">Teacher</button>
+                    </nav>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <label for="global-currency"
+                            style="font-size: 0.7rem; font-weight: 700; color: #475569;">CURRENCY:</label>
+                        <select id="global-currency" name="globalCurrency"
+                            style="padding: 0.25rem; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 0.8rem;"
+                            onchange="window.updateCurrency(this.value)">
+                            <option value="₱">₱ (PHP)</option>
+                            <option value="$">$ (USD)</option>
+                            <option value="€">€ (EUR)</option>
+                            <option value="£">£ (GBP)</option>
+                            <option value="₹">₹ (INR)</option>
+                            <option value="¥">¥ (JPY/CNY)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Branding Settings -->
+                <div style="padding: 0.5rem 1rem 0.75rem 1rem; display: flex; gap: 1rem; align-items: center; border-top: 1px solid #e2e8f0;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-left: auto;">
+                        <label for="primary-color" style="font-size: 0.75rem; font-weight: 600; color: #334155;">Brand Color:</label>
+                        <input type="color" id="primary-color" value="#0b3d91" style="width: 30px; height: 30px; border: none; padding: 0; cursor: pointer;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="forms-container">
+                <!-- Student Form Module -->
+                <form id="student-module" class="form-module active">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="student-doc-type">Document Type</label>
+                            <select id="student-doc-type" name="studentDocType">
+                                <option value="schedule">Class Schedule</option>
+                                <option value="receipt">Tuition Receipt</option>
+                                <option value="proof">Proof of Enrollment</option>
+                                <option value="idcard">Student ID Card</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="student-template">Design Template</label>
+                            <select id="student-template" name="studentTemplate">
+                                <option value="classic">Classic</option>
+                                <option value="modern">Modern</option>
+                                <option value="minimalist">Minimalist</option>
+                                <option value="corporate">Corporate</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="student-fname">First Name</label>
+                            <input type="text" id="student-fname" name="studentFname" placeholder="John" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="student-lname">Last Name</label>
+                            <input type="text" id="student-lname" name="studentLname" placeholder="Doe" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="student-receipt-no">Receipt Number</label>
+                            <input type="text" id="student-receipt-no" name="studentReceiptNo" placeholder="REC-00001">
+                        </div>
+                        <div class="form-group">
+                            <label for="student-amount">Tuition Amount</label>
+                            <input type="number" step="0.01" id="student-amount" name="studentAmount"
+                                placeholder="45000.00">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="student-school-select">School Name</label>
+                        <select id="student-school-select" onchange="toggleCustomSchool(this, 'student-school')">
+                            <optgroup label="Universities & Colleges">
+                                <option value="University of the Philippines">University of the Philippines</option>
+                                <option value="Ateneo de Manila University">Ateneo de Manila University</option>
+                                <option value="De La Salle University">De La Salle University</option>
+                                <option value="University of Santo Tomas">University of Santo Tomas</option>
+                                <option value="Adamson University">Adamson University</option>
+                                <option value="Mapúa University">Mapúa University</option>
+                                <option value="Polytechnic University of the Philippines">Polytechnic University of the Philippines</option>
+                                <option value="Silliman University">Silliman University</option>
+                                <option value="Mindanao State University">Mindanao State University</option>
+                            </optgroup>
+                            <optgroup label="Secondary & Senior High Schools">
+                                <option value="Mapua MCL Senior High School">Mapua MCL Senior High School</option>
+                                <option value="Philippine Science High School">Philippine Science High School</option>
+                                <option value="Ateneo de Manila Senior High School">Ateneo de Manila Senior High School</option>
+                                <option value="University of the Philippines Integrated School">University of the Philippines Integrated School</option>
+                                <option value="International School Manila">International School Manila</option>
+                                <option value="Manila Science High School">Manila Science High School</option>
+                                <option value="De La Salle University Senior High School">De La Salle University Senior High School</option>
+                                <option value="Xavier School">Xavier School</option>
+                                <option value="University of Santo Tomas Senior High School">University of Santo Tomas Senior High School</option>
+                                <option value="Quezon City Science High School">Quezon City Science High School</option>
+                                <option value="British School Manila">British School Manila</option>
+                            </optgroup>
+                            <option value="Other">Other (Type manually)</option>
+                        </select>
+                        <input type="text" id="student-school" name="studentSchool"
+                            placeholder="Enter custom school name" style="display: none; margin-top: 0.5rem;" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="student-id">Student ID</label>
+                            <input type="text" id="student-id" name="studentId" placeholder="STU-12345" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="student-date">Date (Current)</label>
+                            <input type="date" id="student-date" name="studentDate" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="student-semester">Semester</label>
+                            <input type="text" id="student-semester" name="studentSemester" placeholder="1st Semester"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="student-academicyear">Academic Year</label>
+                            <input type="text" id="student-academicyear" name="studentAcademicYear"
+                                placeholder="2025-2026" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="student-logo">Upload Logo (Optional)</label>
+                            <input type="file" id="student-logo" name="studentLogo" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <label for="student-signature">Signatory Signature (Optional)</label>
+                            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                <input type="file" id="student-signature" name="studentSignature" accept="image/*"
+                                    style="flex: 1;">
+                                <button type="button" id="student-sig-remove" class="secondary-btn"
+                                    style="padding: 0.2rem 0.5rem; font-size: 0.8rem; display: none;">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group" style="width: 100%;">
+                            <label for="student-rep-name">Signatory Name (Optional)</label>
+                            <input type="text" id="student-rep-name" name="studentRepName"
+                                placeholder="Dr. Dodjie S. Maestrecampo">
+                            <label
+                                style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" id="student-auto-sig" name="studentAutoSig"
+                                    style="width: auto; padding: 0;">
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">Auto-generate
+                                    signature</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Fields based on Doc Type -->
+                    <div class="dynamic-fields" id="student-dynamic-fields">
+                        <!-- Filled by JS -->
+                    </div>
+                </form>
+
+                <!-- Teacher Form Module -->
+                <form id="teacher-module" class="form-module">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="teacher-doc-type">Document Type</label>
+                            <select id="teacher-doc-type" name="teacherDocType">
+                                <option value="coe">Certificate of Employment</option>
+                                <option value="payslip">Payslip</option>
+                                <option value="license">Teaching License</option>
+                                <option value="idcard">Teacher Identification Card</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="teacher-template">Design Template</label>
+                            <select id="teacher-template" name="teacherTemplate">
+                                <option value="classic">Classic</option>
+                                <option value="modern">Modern</option>
+                                <option value="minimalist">Minimalist</option>
+                                <option value="corporate">Corporate</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="teacher-fullname">Employee Full Name</label>
+                            <input type="text" id="teacher-fullname" name="teacherFullname" placeholder="Jane Smith"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="teacher-school-select">School Name</label>
+                            <select id="teacher-school-select" onchange="toggleCustomSchool(this, 'teacher-school')">
+                                <optgroup label="Universities & Colleges">
+                                    <option value="University of the Philippines">University of the Philippines</option>
+                                    <option value="Ateneo de Manila University">Ateneo de Manila University</option>
+                                    <option value="De La Salle University">De La Salle University</option>
+                                    <option value="University of Santo Tomas">University of Santo Tomas</option>
+                                    <option value="Adamson University">Adamson University</option>
+                                    <option value="Mapúa University">Mapúa University</option>
+                                    <option value="Polytechnic University of the Philippines">Polytechnic University of the Philippines</option>
+                                    <option value="Silliman University">Silliman University</option>
+                                    <option value="Mindanao State University">Mindanao State University</option>
+                                </optgroup>
+                                <optgroup label="Secondary & Senior High Schools">
+                                    <option value="Mapua MCL Senior High School">Mapua MCL Senior High School</option>
+                                    <option value="Philippine Science High School">Philippine Science High School</option>
+                                    <option value="Ateneo de Manila Senior High School">Ateneo de Manila Senior High School</option>
+                                    <option value="University of the Philippines Integrated School">University of the Philippines Integrated School</option>
+                                    <option value="International School Manila">International School Manila</option>
+                                    <option value="Manila Science High School">Manila Science High School</option>
+                                    <option value="De La Salle University Senior High School">De La Salle University Senior High School</option>
+                                    <option value="Xavier School">Xavier School</option>
+                                    <option value="University of Santo Tomas Senior High School">University of Santo Tomas Senior High School</option>
+                                    <option value="Quezon City Science High School">Quezon City Science High School</option>
+                                    <option value="British School Manila">British School Manila</option>
+                                </optgroup>
+                                <option value="Other">Other (Type manually)</option>
+                            </select>
+                            <input type="text" id="teacher-school" name="teacherSchool"
+                                placeholder="Enter custom school name" style="display: none; margin-top: 0.5rem;"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teacher-address">School Address</label>
+                        <input type="text" id="teacher-address" name="teacherAddress"
+                            placeholder="123 Education Lane, City" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="teacher-email">School Email</label>
+                            <input type="email" id="teacher-email" name="teacherEmail" placeholder="admin@school.edu">
+                        </div>
+                        <div class="form-group">
+                            <label for="teacher-phone">School Phone</label>
+                            <input type="tel" id="teacher-phone" name="teacherPhone" placeholder="+1 234 567 8900">
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Fields based on Doc Type -->
+                    <div class="dynamic-fields" id="teacher-dynamic-fields">
+                        <!-- Filled by JS -->
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="teacher-rep-name">Signatory Name</label>
+                            <input type="text" id="teacher-rep-name" name="teacherRepName"
+                                placeholder="Dr. Dodjie S. Maestrecampo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="teacher-signature">Principal Signature</label>
+                            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                <input type="file" id="teacher-signature" name="teacherSignature" accept="image/*"
+                                    style="flex: 1;">
+                                <button type="button" id="teacher-sig-remove" class="secondary-btn"
+                                    style="padding: 0.2rem 0.5rem; font-size: 0.8rem; display: none;">Remove</button>
+                            </div>
+                            <label
+                                style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" id="teacher-auto-sig" name="teacherAutoSig"
+                                    style="width: auto; padding: 0;">
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">Auto-generate
+                                    signature</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teacher-logo">Upload Logo (Optional)</label>
+                        <input type="file" id="teacher-logo" name="teacherLogo" accept="image/*">
+                    </div>
+                </form>
+            </div>
+
+            <div class="actions-panel" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <button id="btn-export-pdf" class="primary-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        style="margin-right: 6px; vertical-align: middle;">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download PDF
+                </button>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button id="btn-export-png" class="secondary-btn"
+                        style="flex: 1; padding: 0.5rem; font-size: 0.85rem;">Download PNG</button>
+                    <button id="btn-export-jpg" class="secondary-btn"
+                        style="flex: 1; padding: 0.5rem; font-size: 0.85rem;">Download JPG</button>
+                </div>
+
+                <!-- QR Code Toggle -->
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.4rem 0; border-top: 1px solid #e2e8f0; margin-top: 0.25rem;">
+                    <input type="checkbox" id="qr-toggle" name="qrEnabled" style="width: auto; padding: 0;">
+                    <span style="font-size: 0.8rem; font-weight: 600; color: #334155;">Enable QR Code Verification</span>
+                </label>
+
+                <!-- Save / Load Presets -->
+                <div style="border-top: 1px solid #e2e8f0; padding-top: 0.5rem;">
+                    <div style="font-size: 0.75rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.4rem;">Presets</div>
+                    <div style="display: flex; gap: 0.4rem; align-items: center;">
+                        <select id="preset-list" style="flex: 1; padding: 0.35rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.8rem; background: white;">
+                            <option value="" disabled selected>— Select Preset —</option>
+                        </select>
+                        <button id="btn-load-preset" class="secondary-btn" style="padding: 0.35rem 0.6rem; font-size: 0.75rem; white-space: nowrap;">Load</button>
+                    </div>
+                    <div style="display: flex; gap: 0.4rem; margin-top: 0.4rem;">
+                        <input type="text" id="preset-name-input" placeholder="Preset name..." style="flex: 1; padding: 0.35rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.8rem;">
+                        <button id="btn-save-preset" class="secondary-btn" style="padding: 0.35rem 0.6rem; font-size: 0.75rem; white-space: nowrap; background: #ecfdf5; color: #059669; border-color: #6ee7b7;">Save</button>
+                        <button id="btn-delete-preset" class="secondary-btn" style="padding: 0.35rem 0.6rem; font-size: 0.75rem; white-space: nowrap; background: #fef2f2; color: #ef4444; border-color: #fca5a5;">Del</button>
+                    </div>
+                </div>
+
+                <button id="btn-clear" class="secondary-btn"
+                    style="margin-top: 0.5rem; background: #fef2f2; color: #ef4444; border-color: #fca5a5;">Clear
+                    Data</button>
+            </div>
+        </aside>
+
+        <!-- Right Pane: Live Document Preview -->
+        <main class="preview-panel">
+            <div class="zoom-controls no-print">
+                <button id="zoom-out" title="Zoom Out">-</button>
+                <span id="zoom-level">100%</span>
+                <button id="zoom-in" title="Zoom In">+</button>
+            </div>
+
+            <div class="paper-container" id="paper-container">
+                <!-- This element will be exported to PDF -->
+                <div id="document-render" class="document-page letter-format">
+                    <div id="render-content">
+                        <!-- Content injected via JS -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="logos.js" defer></script>
+    <script src="qrcode.min.js" defer></script>
+    <script src="app.js" defer></script>
+</body>
+
+</html>

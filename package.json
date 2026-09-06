@@ -1,0 +1,13 @@
+{
+  "name": "document-generator-pro",
+  "version": "1.0.0",
+  "description": "Student and Teacher Document Generator",
+  "main": "app.js",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "fs-extra": "^11.4.0",
+    "javascript-obfuscator": "^4.2.2"
+  }
+}
