@@ -135,25 +135,79 @@ function saveState() {
 // 2. University Logo Map (local files in school_logos/)
 // ==========================================================================
 const UNIVERSITY_LOGOS = {
-    UP:       { name: 'University of the Philippines',             file: 'school_logos/UP_logo.png' },
-    Ateneo:   { name: 'Ateneo de Manila University',               file: 'school_logos/Ateneo_logo.png' },
-    DLSU:     { name: 'De La Salle University',                    file: 'school_logos/DLSU_logo.png' },
-    UST:      { name: 'University of Santo Tomas',                 file: 'school_logos/UST_logo.png' },
-    Adamson:  { name: 'Adamson University',                        file: 'school_logos/Adamson_logo.png' },
-    Mapua:    { name: 'Mapúa University',                          file: 'school_logos/Mapua_logo.png' },
-    PUP:      { name: 'Polytechnic University of the Philippines', file: 'school_logos/PUP_logo.png' },
-    Silliman: { name: 'Silliman University',                       file: 'school_logos/Silliman_logo.png' },
-    MSU:      { name: 'Mindanao State University',                 file: 'school_logos/MSU_logo.png' },
-    PSHS:     { name: 'Philippine Science High School',            file: 'school_logos/PSHS_logo.png' },
-    AteneoSHS:{ name: 'Ateneo de Manila Senior High School',       file: 'school_logos/AteneoSHS_logo.png' },
-    UPIS:     { name: 'University of the Philippines Integrated School', file: 'school_logos/UPIS_logo.png' },
-    ISM:      { name: 'International School Manila',               file: 'school_logos/ISM_logo.png' },
-    MaSci:    { name: 'Manila Science High School',                file: 'school_logos/MaSci_logo.png' },
-    DLSUSHS:  { name: 'De La Salle University Senior High School', file: 'school_logos/DLSUSHS_logo.png' },
-    Xavier:   { name: 'Xavier School',                             file: 'school_logos/Xavier_logo.png' },
-    USTSHS:   { name: 'University of Santo Tomas Senior High School', file: 'school_logos/UST_logo.png' },
-    QueSci:   { name: 'Quezon City Science High School',           file: 'school_logos/QueSci_logo.png' },
-    BSM:      { name: 'British School Manila',                     file: 'school_logos/BSM_logo.png' },
+    // ── Philippine Schools (local logos via LOGO_DATA) ──
+    UP:        { name: 'University of the Philippines',                   file: 'school_logos/ph/UP_logo.png' },
+    Ateneo:    { name: 'Ateneo de Manila University',                     file: 'school_logos/ph/Ateneo_logo.png' },
+    DLSU:      { name: 'De La Salle University',                          file: 'school_logos/ph/DLSU_logo.png' },
+    UST:       { name: 'University of Santo Tomas',                       file: 'school_logos/ph/UST_logo.png' },
+    Adamson:   { name: 'Adamson University',                              file: 'school_logos/ph/Adamson_logo.png' },
+    Mapua:     { name: 'Mapúa University',                                file: 'school_logos/ph/Mapua_logo.png' },
+    PUP:       { name: 'Polytechnic University of the Philippines',       file: 'school_logos/ph/PUP_logo.png' },
+    Silliman:  { name: 'Silliman University',                             file: 'school_logos/ph/Silliman_logo.png' },
+    MSU_PH:    { name: 'Mindanao State University',                       file: 'school_logos/ph/MSU_logo.png' },
+    PSHS:      { name: 'Philippine Science High School',                  file: 'school_logos/ph/PSHS_logo.png' },
+    AteneoSHS: { name: 'Ateneo de Manila Senior High School',             file: 'school_logos/ph/AteneoSHS_logo.png' },
+    UPIS:      { name: 'University of the Philippines Integrated School', file: 'school_logos/ph/UPIS_logo.png' },
+    ISM:       { name: 'International School Manila',                     file: 'school_logos/ph/ISM_logo.png' },
+    MaSci:     { name: 'Manila Science High School',                      file: 'school_logos/ph/MaSci_logo.png' },
+    DLSUSHS:   { name: 'De La Salle University Senior High School',       file: 'school_logos/ph/DLSUSHS_logo.png' },
+    Xavier:    { name: 'Xavier School',                                   file: 'school_logos/ph/Xavier_logo.png' },
+    USTSHS:    { name: 'University of Santo Tomas Senior High School',    file: 'school_logos/ph/UST_logo.png' },
+    QueSci:    { name: 'Quezon City Science High School',                 file: 'school_logos/ph/QueSci_logo.png' },
+    BSM:       { name: 'British School Manila',                           file: 'school_logos/ph/BSM_logo.png' },
+    MapuaMCL:  { name: 'Mapua MCL Senior High School',                    file: 'school_logos/ph/Mapua_logo.png' },
+
+    // ── US Universities (logos downloaded locally) ──
+    MIT:       { name: 'Massachusetts Institute of Technology (MIT)',      file: 'school_logos/us/MIT_logo.png' },
+    Harvard:   { name: 'Harvard University',                              file: 'school_logos/us/Harvard_logo.png' },
+    Stanford:  { name: 'Stanford University',                             file: 'school_logos/us/Stanford_logo.png' },
+    Yale:      { name: 'Yale University',                                 file: 'school_logos/us/Yale_logo.png' },
+    Princeton: { name: 'Princeton University',                            file: 'school_logos/us/Princeton_logo.png' },
+    Caltech:   { name: 'California Institute of Technology (Caltech)',     file: 'school_logos/us/Caltech_logo.png' },
+    Columbia:  { name: 'Columbia University',                             file: 'school_logos/us/Columbia_logo.png' },
+    JHU:       { name: 'Johns Hopkins University',                        file: 'school_logos/us/JHU_logo.png' },
+    UPenn:     { name: 'University of Pennsylvania',                      file: 'school_logos/us/UPenn_logo.png' },
+    NWU:       { name: 'Northwestern University',                         file: 'school_logos/us/NWU_logo.png' },
+    UCB:       { name: 'University of California, Berkeley',              file: 'school_logos/us/UCB_logo.png' },
+    UCLA:      { name: 'University of California, Los Angeles (UCLA)',    file: 'school_logos/us/UCLA_logo.png' },
+    UMich:     { name: 'University of Michigan',                          file: 'school_logos/us/UMich_logo.png' },
+    UVA:       { name: 'University of Virginia',                          file: 'school_logos/us/UVA_logo.png' },
+    GaTech:    { name: 'Georgia Institute of Technology',                 file: 'school_logos/us/GaTech_logo.png' },
+    UNC:       { name: 'University of North Carolina, Chapel Hill',       file: 'school_logos/us/UNC_logo.png' },
+    UCSD:      { name: 'University of California, San Diego',             file: 'school_logos/us/UCSD_logo.png' },
+    UIUC:      { name: 'University of Illinois Urbana-Champaign',         file: 'school_logos/us/UIUC_logo.png' },
+    UWMad:     { name: 'University of Wisconsin-Madison',                 file: 'school_logos/us/UWMad_logo.png' },
+    UTAustin:  { name: 'University of Texas at Austin',                   file: 'school_logos/us/UTAustin_logo.png' },
+    Cornell:   { name: 'Cornell University',                              file: 'school_logos/us/Cornell_logo.png' },
+    USC:       { name: 'University of Southern California (USC)',          file: 'school_logos/us/USC_logo.png' },
+    CMU:       { name: 'Carnegie Mellon University',                      file: 'school_logos/us/CMU_logo.png' },
+    UWash:     { name: 'University of Washington',                        file: 'school_logos/us/UWash_logo.png' },
+    NYU:       { name: 'New York University (NYU)',                       file: 'school_logos/us/NYU_logo.png' },
+    UFL:       { name: 'University of Florida',                           file: 'school_logos/us/UFL_logo.png' },
+    BU:        { name: 'Boston University',                               file: 'school_logos/us/BU_logo.png' },
+    UCSB:      { name: 'University of California, Santa Barbara',         file: 'school_logos/us/UCSB_logo.png' },
+    UCD:       { name: 'University of California, Davis',                 file: 'school_logos/us/UCD_logo.png' },
+    UCI:       { name: 'University of California, Irvine',                file: 'school_logos/us/UCI_logo.png' },
+    UMN:       { name: 'University of Minnesota, Twin Cities',            file: 'school_logos/us/UMN_logo.png' },
+    UPitt:     { name: 'University of Pittsburgh',                        file: 'school_logos/us/UPitt_logo.png' },
+    OSU:       { name: 'Ohio State University',                           file: 'school_logos/us/OSU_logo.png' },
+    UMD:       { name: 'University of Maryland, College Park',            file: 'school_logos/us/UMD_logo.png' },
+    Purdue:    { name: 'Purdue University',                               file: 'school_logos/us/Purdue_logo.png' },
+    URoch:     { name: 'University of Rochester',                         file: 'school_logos/us/URoch_logo.png' },
+    UMiami:    { name: 'University of Miami',                             file: 'school_logos/us/UMiami_logo.png' },
+    CUBoulder: { name: 'University of Colorado Boulder',                  file: 'school_logos/us/CUBoulder_logo.png' },
+    UAZ:       { name: 'University of Arizona',                           file: 'school_logos/us/UAZ_logo.png' },
+    NotreDame: { name: 'University of Notre Dame',                        file: 'school_logos/us/NotreDame_logo.png' },
+    UConn:     { name: 'University of Connecticut',                       file: 'school_logos/us/UConn_logo.png' },
+    UGA:       { name: 'University of Georgia',                           file: 'school_logos/us/UGA_logo.png' },
+    UIC:       { name: 'University of Illinois Chicago',                  file: 'school_logos/us/UIC_logo.png' },
+    TAMU:      { name: 'Texas A&M University',                            file: 'school_logos/us/TAMU_logo.png' },
+    UMass:     { name: 'University of Massachusetts Amherst',             file: 'school_logos/us/UMass_logo.png' },
+    IUB:       { name: 'Indiana University Bloomington',                  file: 'school_logos/us/IUB_logo.png' },
+    UCSC:      { name: 'University of California, Santa Cruz',            file: 'school_logos/us/UCSC_logo.png' },
+    UDel:      { name: 'University of Delaware',                          file: 'school_logos/us/UDel_logo.png' },
+    UOregon:   { name: 'University of Oregon',                            file: 'school_logos/us/UOregon_logo.png' },
+    MSU_US:    { name: 'Michigan State University',                       file: 'school_logos/us/MSU_US_logo.png' },
 };
 
 // In-memory cache so we only convert once per session
@@ -176,15 +230,23 @@ window.toggleCustomSchool = function(selectEl, inputId) {
     }
     inputEl.value = newValue;
     
-    // Update state immediately to prevent race conditions with other synchronous listeners
+    // Update state immediately
     const stateKey = inputEl.name;
     if (stateKey) {
         state[stateKey] = newValue;
         saveState();
     }
 
-    inputEl.dispatchEvent(new Event('input'));
-    inputEl.dispatchEvent(new Event('change'));
+    // Directly trigger logo sync — don't rely on event chain which can fail
+    if (newValue) {
+        if (inputId === 'student-school') {
+            handleSchoolNameLogoSync('studentLogo', newValue);
+        } else if (inputId === 'teacher-school') {
+            handleSchoolNameLogoSync('teacherLogo', newValue);
+        }
+    }
+
+    renderPreview();
 }
 
 
@@ -336,8 +398,360 @@ const SCHOOL_CONTACT_DATA = {
         address: '36th Street, University Parkway, Bonifacio Global City, Taguig City, 1634 Metro Manila',
         email: 'enquiries@britishschoolmanila.org',
         phone: '+63 2 8860 1000',
-        principal: 'Mr. Simon Mann',                 // Head of School
-        registrar: 'Ms. Patricia A. Reyes'           // School Registrar
+        principal: 'Mr. Simon Mann',
+        registrar: 'Ms. Patricia A. Reyes'
+    },
+
+    // ── US Universities ──
+    'Massachusetts Institute of Technology (MIT)': {
+        address: '77 Massachusetts Avenue, Cambridge, MA 02139, USA',
+        email: 'admissions@mit.edu',
+        phone: '+1 617-253-1000',
+        principal: 'Dr. Sally Kornbluth',
+        registrar: 'Office of the Registrar'
+    },
+    'Harvard University': {
+        address: 'Massachusetts Hall, Cambridge, MA 02138, USA',
+        email: 'admissions@fas.harvard.edu',
+        phone: '+1 617-495-1000',
+        principal: 'Dr. Alan M. Garber',
+        registrar: 'Office of the University Registrar'
+    },
+    'Stanford University': {
+        address: '450 Serra Mall, Stanford, CA 94305, USA',
+        email: 'admission@stanford.edu',
+        phone: '+1 650-723-2300',
+        principal: 'Dr. Jonathan Levin',
+        registrar: 'Office of the University Registrar'
+    },
+    'Yale University': {
+        address: 'New Haven, CT 06520, USA',
+        email: 'admissions@yale.edu',
+        phone: '+1 203-432-4771',
+        principal: 'Dr. Peter Salovey',
+        registrar: 'Office of the University Registrar'
+    },
+    'Princeton University': {
+        address: '1 Nassau Hall, Princeton, NJ 08544, USA',
+        email: 'admission@princeton.edu',
+        phone: '+1 609-258-3000',
+        principal: 'Dr. Christopher L. Eisgruber',
+        registrar: 'Office of the Registrar'
+    },
+    'California Institute of Technology (Caltech)': {
+        address: '1200 East California Boulevard, Pasadena, CA 91125, USA',
+        email: 'admissions@caltech.edu',
+        phone: '+1 626-395-6811',
+        principal: 'Dr. Thomas F. Rosenbaum',
+        registrar: 'Office of the Registrar'
+    },
+    'Columbia University': {
+        address: '535 West 116th Street, New York, NY 10027, USA',
+        email: 'ugrad-admissions@columbia.edu',
+        phone: '+1 212-854-1754',
+        principal: 'Dr. Minouche Shafik',
+        registrar: 'Office of the University Registrar'
+    },
+    'Johns Hopkins University': {
+        address: '3400 North Charles Street, Baltimore, MD 21218, USA',
+        email: 'gotojhu@jhu.edu',
+        phone: '+1 410-516-8000',
+        principal: 'Dr. Ronald J. Daniels',
+        registrar: 'Office of the Registrar'
+    },
+    'University of Pennsylvania': {
+        address: '3451 Walnut Street, Philadelphia, PA 19104, USA',
+        email: 'info@admissions.upenn.edu',
+        phone: '+1 215-898-5000',
+        principal: 'Dr. M. Elizabeth Magill',
+        registrar: 'Office of the University Registrar'
+    },
+    'Northwestern University': {
+        address: '633 Clark Street, Evanston, IL 60208, USA',
+        email: 'ug-admission@northwestern.edu',
+        phone: '+1 847-491-3741',
+        principal: 'Dr. Michael Schill',
+        registrar: 'Office of the Registrar'
+    },
+    'University of California, Berkeley': {
+        address: '110 Sproul Hall, Berkeley, CA 94720, USA',
+        email: 'admissions@berkeley.edu',
+        phone: '+1 510-642-6000',
+        principal: 'Dr. Carol T. Christ',
+        registrar: 'Office of the Registrar'
+    },
+    'University of California, Los Angeles (UCLA)': {
+        address: '405 Hilgard Avenue, Los Angeles, CA 90095, USA',
+        email: 'ugadm@saonet.ucla.edu',
+        phone: '+1 310-825-4321',
+        principal: 'Dr. Gene D. Block',
+        registrar: 'Office of the Registrar'
+    },
+    'University of Michigan': {
+        address: '500 South State Street, Ann Arbor, MI 48109, USA',
+        email: 'admissions@umich.edu',
+        phone: '+1 734-764-1817',
+        principal: 'Dr. Santa J. Ono',
+        registrar: 'Office of the Registrar'
+    },
+    'University of Virginia': {
+        address: '190 McCormick Road, Charlottesville, VA 22904, USA',
+        email: 'undergradadmission@virginia.edu',
+        phone: '+1 434-924-0311',
+        principal: 'James E. Ryan',
+        registrar: 'Office of the University Registrar'
+    },
+    'Georgia Institute of Technology': {
+        address: '225 North Avenue NW, Atlanta, GA 30332, USA',
+        email: 'admission@gatech.edu',
+        phone: '+1 404-894-2000',
+        principal: 'Dr. Ángel Cabrera',
+        registrar: 'Office of the Registrar'
+    },
+    'University of North Carolina, Chapel Hill': {
+        address: '103 South Building, Chapel Hill, NC 27599, USA',
+        email: 'unchelp@admissions.unc.edu',
+        phone: '+1 919-962-2211',
+        principal: 'Dr. Kevin M. Guskiewicz',
+        registrar: 'Office of the University Registrar'
+    },
+    'University of California, San Diego': {
+        address: '9500 Gilman Drive, La Jolla, CA 92093, USA',
+        email: 'admissionsinfo@ucsd.edu',
+        phone: '+1 858-534-2230',
+        principal: 'Dr. Pradeep K. Khosla',
+        registrar: 'Office of the Registrar'
+    },
+    'University of Illinois Urbana-Champaign': {
+        address: '601 East John Street, Champaign, IL 61820, USA',
+        email: 'admissions@illinois.edu',
+        phone: '+1 217-333-1000',
+        principal: 'Dr. Robert J. Jones',
+        registrar: 'Office of the Registrar'
+    },
+    'University of Wisconsin-Madison': {
+        address: '500 Lincoln Drive, Madison, WI 53706, USA',
+        email: 'onwisconsin@admissions.wisc.edu',
+        phone: '+1 608-263-2400',
+        principal: 'Dr. Jennifer L. Mnookin',
+        registrar: 'Office of the Registrar'
+    },
+    'University of Texas at Austin': {
+        address: '110 Inner Campus Drive, Austin, TX 78712, USA',
+        email: 'admissions@utexas.edu',
+        phone: '+1 512-471-3434',
+        principal: 'Dr. Jay Hartzell',
+        registrar: 'Office of the Registrar'
+    },
+    'Cornell University': {
+        address: '410 Thurston Avenue, Ithaca, NY 14850, USA',
+        email: 'admissions@cornell.edu',
+        phone: '+1 607-255-2000',
+        principal: 'Dr. Martha E. Pollack',
+        registrar: 'Office of the University Registrar'
+    },
+    'University of Southern California (USC)': {
+        address: '3551 Trousdale Parkway, Los Angeles, CA 90089, USA',
+        email: 'admitusc@usc.edu',
+        phone: '+1 213-740-2311',
+        principal: 'Dr. Carol L. Folt',
+        registrar: 'Office of the Registrar'
+    },
+    'Carnegie Mellon University': {
+        address: '5000 Forbes Avenue, Pittsburgh, PA 15213, USA',
+        email: 'admission@andrew.cmu.edu',
+        phone: '+1 412-268-2000',
+        principal: 'Dr. Farnam Jahanian',
+        registrar: 'Office of the Registrar'
+    },
+    'University of Washington': {
+        address: '1410 NE Campus Parkway, Seattle, WA 98195, USA',
+        email: 'admit@uw.edu',
+        phone: '+1 206-543-2100',
+        principal: 'Dr. Ana Mari Cauce',
+        registrar: 'Office of the University Registrar'
+    },
+    'New York University (NYU)': {
+        address: '70 Washington Square South, New York, NY 10012, USA',
+        email: 'admissions@nyu.edu',
+        phone: '+1 212-998-1212',
+        principal: 'Dr. Linda G. Mills',
+        registrar: 'Office of the University Registrar'
+    },
+    'University of Florida': {
+        address: '201 Criser Hall, Gainesville, FL 32611, USA',
+        email: 'admissions@ufl.edu',
+        phone: '+1 352-392-3261',
+        principal: 'Dr. Ben Sasse',
+        registrar: 'Office of the University Registrar'
+    },
+    'Boston University': {
+        address: '233 Bay State Road, Boston, MA 02215, USA',
+        email: 'admissions@bu.edu',
+        phone: '+1 617-353-2300',
+        principal: 'Dr. Robert A. Brown',
+        registrar: 'Office of the University Registrar'
+    },
+    'University of California, Santa Barbara': {
+        address: '552 University Road, Santa Barbara, CA 93106, USA',
+        email: 'admissions@sa.ucsb.edu',
+        phone: '+1 805-893-8000',
+        principal: 'Dr. Henry T. Yang',
+        registrar: 'Office of the Registrar'
+    },
+    'University of California, Davis': {
+        address: '1 Shields Avenue, Davis, CA 95616, USA',
+        email: 'admissions@ucdavis.edu',
+        phone: '+1 530-752-1011',
+        principal: 'Dr. Gary S. May',
+        registrar: 'Office of the University Registrar'
+    },
+    'University of California, Irvine': {
+        address: '260 Aldrich Hall, Irvine, CA 92697, USA',
+        email: 'admissions@uci.edu',
+        phone: '+1 949-824-5011',
+        principal: 'Dr. Howard Gillman',
+        registrar: 'Office of the Registrar'
+    },
+    'University of Minnesota, Twin Cities': {
+        address: '100 Church Street SE, Minneapolis, MN 55455, USA',
+        email: 'admissions@umn.edu',
+        phone: '+1 612-625-5000',
+        principal: 'Dr. Joan Gabel',
+        registrar: 'Office of the Registrar'
+    },
+    'University of Pittsburgh': {
+        address: '4200 Fifth Avenue, Pittsburgh, PA 15260, USA',
+        email: 'oafa@pitt.edu',
+        phone: '+1 412-624-4141',
+        principal: 'Dr. Joan Gabel',
+        registrar: 'Office of the University Registrar'
+    },
+    'Ohio State University': {
+        address: '281 West Lane Avenue, Columbus, OH 43210, USA',
+        email: 'askabuckeye@osu.edu',
+        phone: '+1 614-292-6446',
+        principal: 'Dr. Walter E. Carter Jr.',
+        registrar: 'Office of the University Registrar'
+    },
+    'University of Maryland, College Park': {
+        address: '7999 Regents Drive, College Park, MD 20742, USA',
+        email: 'ApplyMaryland@umd.edu',
+        phone: '+1 301-405-1000',
+        principal: 'Dr. Darryll J. Pines',
+        registrar: 'Office of the Registrar'
+    },
+    'Purdue University': {
+        address: '610 Purdue Mall, West Lafayette, IN 47907, USA',
+        email: 'admissions@purdue.edu',
+        phone: '+1 765-494-4600',
+        principal: 'Dr. Mung Chiang',
+        registrar: 'Office of the Registrar'
+    },
+    'University of Rochester': {
+        address: '500 Joseph C. Wilson Boulevard, Rochester, NY 14627, USA',
+        email: 'admit@admissions.rochester.edu',
+        phone: '+1 585-275-2121',
+        principal: 'Dr. Sarah C. Mangelsdorf',
+        registrar: 'Office of the University Registrar'
+    },
+    'University of Miami': {
+        address: '1320 South Dixie Highway, Coral Gables, FL 33146, USA',
+        email: 'admission@miami.edu',
+        phone: '+1 305-284-2211',
+        principal: 'Dr. Julio Frenk',
+        registrar: 'Office of the University Registrar'
+    },
+    'University of Colorado Boulder': {
+        address: '3100 Marine Street, Boulder, CO 80309, USA',
+        email: 'apply@colorado.edu',
+        phone: '+1 303-492-1411',
+        principal: 'Dr. Todd Saliman',
+        registrar: 'Office of the Registrar'
+    },
+    'University of Arizona': {
+        address: '1200 East University Boulevard, Tucson, AZ 85721, USA',
+        email: 'admissions@arizona.edu',
+        phone: '+1 520-621-2211',
+        principal: 'Dr. Robert C. Robbins',
+        registrar: 'Office of the Registrar'
+    },
+    'University of Notre Dame': {
+        address: '220 Main Building, Notre Dame, IN 46556, USA',
+        email: 'admissions@nd.edu',
+        phone: '+1 574-631-5000',
+        principal: 'Rev. John I. Jenkins, C.S.C.',
+        registrar: 'Office of the Registrar'
+    },
+    'University of Connecticut': {
+        address: '2131 Hillside Road, Storrs, CT 06269, USA',
+        email: 'beahusky@uconn.edu',
+        phone: '+1 860-486-2000',
+        principal: 'Dr. Radenka Maric',
+        registrar: 'Office of the Registrar'
+    },
+    'University of Georgia': {
+        address: '210 South Jackson Street, Athens, GA 30602, USA',
+        email: 'adm-info@uga.edu',
+        phone: '+1 706-542-3000',
+        principal: 'Dr. Jere W. Morehead',
+        registrar: 'Office of the Registrar'
+    },
+    'University of Illinois Chicago': {
+        address: '1200 West Harrison Street, Chicago, IL 60607, USA',
+        email: 'uic-admissions@uic.edu',
+        phone: '+1 312-996-7000',
+        principal: 'Dr. Timothy L. Killeen',
+        registrar: 'Office of the Registrar'
+    },
+    'Texas A&M University': {
+        address: '400 Bizzell Street, College Station, TX 77843, USA',
+        email: 'admissions@tamu.edu',
+        phone: '+1 979-845-3211',
+        principal: 'Gen. Mark A. Welsh III',
+        registrar: 'Office of the Registrar'
+    },
+    'University of Massachusetts Amherst': {
+        address: '181 Presidents Drive, Amherst, MA 01003, USA',
+        email: 'mail@admissions.umass.edu',
+        phone: '+1 413-545-0111',
+        principal: 'Dr. Javier Reyes',
+        registrar: 'Office of the Registrar'
+    },
+    'Indiana University Bloomington': {
+        address: '107 South Indiana Avenue, Bloomington, IN 47405, USA',
+        email: 'iuadmit@indiana.edu',
+        phone: '+1 812-855-4848',
+        principal: 'Dr. Pamela Whitten',
+        registrar: 'Office of the Registrar'
+    },
+    'University of California, Santa Cruz': {
+        address: '1156 High Street, Santa Cruz, CA 95064, USA',
+        email: 'admissions@ucsc.edu',
+        phone: '+1 831-459-0111',
+        principal: 'Dr. Cynthia K. Larive',
+        registrar: 'Office of the Registrar'
+    },
+    'University of Delaware': {
+        address: '210 South College Avenue, Newark, DE 19716, USA',
+        email: 'admissions@udel.edu',
+        phone: '+1 302-831-2000',
+        principal: 'Dr. Dennis Assanis',
+        registrar: 'Office of the University Registrar'
+    },
+    'University of Oregon': {
+        address: '1585 East 13th Avenue, Eugene, OR 97403, USA',
+        email: 'uoadmit@uoregon.edu',
+        phone: '+1 541-346-1000',
+        principal: 'Dr. Karl Scholz',
+        registrar: 'Office of the Registrar'
+    },
+    'Michigan State University': {
+        address: '426 Auditorium Road, East Lansing, MI 48824, USA',
+        email: 'admis@msu.edu',
+        phone: '+1 517-355-1855',
+        principal: 'Dr. Kevin M. Guskiewicz',
+        registrar: 'Office of the Registrar'
     }
 };
 
@@ -513,6 +927,112 @@ function findSchoolData(value) {
     return null;
 }
 
+// ==========================================================================
+// Wikipedia Logo Fetcher — pulls school logos from Wikipedia
+// Uses JSONP (script injection) for API call + Image element for loading
+// This works from file:// protocol unlike fetch() which gets CORS-blocked
+// ==========================================================================
+
+// Step 1: Get the Wikipedia page image URL via JSONP (no CORS issues)
+function getWikipediaImageUrl(wikiTitle) {
+    return new Promise((resolve) => {
+        const callbackName = `wikiCb_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+        const script = document.createElement('script');
+        
+        // Timeout fallback
+        const timeout = setTimeout(() => {
+            cleanup();
+            resolve(null);
+        }, 8000);
+        
+        function cleanup() {
+            clearTimeout(timeout);
+            delete window[callbackName];
+            if (script.parentNode) script.parentNode.removeChild(script);
+        }
+        
+        window[callbackName] = function(data) {
+            cleanup();
+            try {
+                const pages = data.query && data.query.pages;
+                if (!pages) { resolve(null); return; }
+                const page = Object.values(pages)[0];
+                if (page && page.thumbnail && page.thumbnail.source) {
+                    // Request a larger thumbnail (300px)
+                    const url = page.thumbnail.source.replace(/\/\d+px-/, '/300px-');
+                    resolve(url);
+                } else {
+                    resolve(null);
+                }
+            } catch (e) {
+                resolve(null);
+            }
+        };
+        
+        script.src = `https://en.wikipedia.org/w/api.php?action=query&titles=${wikiTitle}&prop=pageimages&format=json&pithumbsize=300&callback=${callbackName}`;
+        script.onerror = () => { cleanup(); resolve(null); };
+        document.head.appendChild(script);
+    });
+}
+
+// Step 2: Load the image via <img> element and convert to base64 via Canvas
+function loadImageAsBase64(url) {
+    return new Promise((resolve) => {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        
+        const timeout = setTimeout(() => {
+            resolve(null);
+        }, 10000);
+        
+        img.onload = function() {
+            clearTimeout(timeout);
+            try {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.naturalWidth;
+                canvas.height = img.naturalHeight;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                const dataUrl = canvas.toDataURL('image/png');
+                resolve(dataUrl);
+            } catch (e) {
+                console.warn('Canvas conversion failed:', e);
+                resolve(null);
+            }
+        };
+        
+        img.onerror = function() {
+            clearTimeout(timeout);
+            resolve(null);
+        };
+        
+        img.src = url;
+    });
+}
+
+// Combined: fetch logo from Wikipedia and return base64
+async function fetchLogoFromWikipedia(wikiTitle) {
+    const cacheKey = `wiki_${wikiTitle}`;
+    if (logoCache[cacheKey]) return logoCache[cacheKey];
+    
+    try {
+        const imageUrl = await getWikipediaImageUrl(wikiTitle);
+        if (!imageUrl) {
+            console.warn('No Wikipedia image found for:', wikiTitle);
+            return null;
+        }
+        
+        const base64 = await loadImageAsBase64(imageUrl);
+        if (base64) {
+            logoCache[cacheKey] = base64;
+        }
+        return base64;
+    } catch (e) {
+        console.warn('Wikipedia logo fetch failed for', wikiTitle, e);
+        return null;
+    }
+}
+
 function handleSchoolNameLogoSync(stateKey, value) {
     if (!value) return;
     const valLower = value.toLowerCase();
@@ -529,8 +1049,11 @@ function handleSchoolNameLogoSync(stateKey, value) {
         }
     }
 
-    if (matchedKey && typeof LOGO_DATA !== 'undefined' && LOGO_DATA[matchedKey]) {
-        state[stateKey] = LOGO_DATA[matchedKey];
+    // Use local LOGO_DATA for all schools (PH and US)
+    if (matchedKey) {
+        if (typeof LOGO_DATA !== 'undefined' && LOGO_DATA[matchedKey]) {
+            state[stateKey] = LOGO_DATA[matchedKey];
+        }
     }
 
     // Auto-update address, email, phone, and signatory from SCHOOL_CONTACT_DATA
@@ -3179,6 +3702,8 @@ function clearAllData() {
 // ==========================================================================
 function updateZoom() {
     if (!paperContainer) return;
+    // Clear any CSS animation that may override the transform
+    paperContainer.style.animation = 'none';
     paperContainer.style.transform = `scale(${currentZoom / 100})`;
     const zoomLabel = $('#zoom-level');
     if (zoomLabel) zoomLabel.textContent = `${currentZoom}%`;
@@ -3428,46 +3953,47 @@ function updatePresetDropdown() {
 
 /* ==========================================================================
    Security Deterrents (Anti-Screenshot / Anti-Copy)
+   Scoped to preview panel only — form inputs remain fully functional.
    ========================================================================== */
 
-// 1. Disable Right-Click
+// 1. Disable Right-Click on preview panel only
 document.addEventListener('contextmenu', (e) => {
-    e.preventDefault();
+    if (e.target.closest('.preview-panel')) {
+        e.preventDefault();
+    }
 });
 
-// 2. Disable Keyboard Shortcuts (PrintScreen, Ctrl+P, Ctrl+S, Ctrl+U, Ctrl+C)
+// 2. Disable Keyboard Shortcuts (PrintScreen, Ctrl+P, Ctrl+S, Ctrl+U)
+//    Ctrl+C is only blocked when focus is inside the preview panel.
 document.addEventListener('keydown', (e) => {
     // Print Screen Key
     if (e.key === 'PrintScreen') {
         navigator.clipboard.writeText('Screenshots are disabled for security reasons.');
-        
-        // Optional: Temporarily blur the screen to ruin the screenshot
         document.body.style.filter = 'blur(20px)';
         setTimeout(() => {
             document.body.style.filter = 'none';
         }, 1000);
     }
     
+    const isInPreview = document.activeElement && document.activeElement.closest('.preview-panel');
+    
     // Ctrl shortcuts
     if (e.ctrlKey) {
-        if (
-            e.key === 'p' || // Print
-            e.key === 's' || // Save
-            e.key === 'u' || // View Source
-            e.key === 'c'    // Copy
-        ) {
+        if (e.key === 'p' || e.key === 's' || e.key === 'u') {
+            e.preventDefault();
+        }
+        // Only block copy inside the preview panel
+        if (e.key === 'c' && isInPreview) {
             e.preventDefault();
         }
     }
     
     // Mac Cmd shortcuts
     if (e.metaKey) {
-        if (
-            e.key === 'p' || // Print
-            e.key === 's' || // Save
-            e.key === 'u' || // View Source
-            e.key === 'c'    // Copy
-        ) {
+        if (e.key === 'p' || e.key === 's' || e.key === 'u') {
+            e.preventDefault();
+        }
+        if (e.key === 'c' && isInPreview) {
             e.preventDefault();
         }
     }

@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional Document Generator</title>
-    <!-- Google Fonts: Inter and Great Vibes -->
+    <meta name="description" content="Generate professional student and teacher documents including IDs, schedules, receipts, certificates, and more.">
+    <!-- Google Fonts: Inter, Outfit, and Great Vibes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Herr+Von+Muellerhoff&family=Mr+De+Haviland&family=Mrs+Saint+Delafield&family=Libre+Barcode+39&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Herr+Von+Muellerhoff&family=Mr+De+Haviland&family=Mrs+Saint+Delafield&family=Libre+Barcode+39&display=swap"
         rel="stylesheet">
     <!-- Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -18,13 +19,30 @@
 </head>
 
 <body>
+    <!-- Animated Background -->
+    <div class="animated-bg" aria-hidden="true">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+        <div class="bg-orb bg-orb-4"></div>
+    </div>
+
     <!-- App Container -->
     <div class="app-container">
+
+        <!-- Mobile Toggle -->
+        <button class="mobile-toggle no-print" id="mobile-toggle" aria-label="Toggle Controls">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
 
         <!-- Left Pane: Controls & Forms -->
         <aside class="control-panel no-print">
             <header class="panel-header">
-                <div style="font-size: 0.8rem; color: var(--primary-color); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Made by ss_shabu</div>
+                <div style="font-size: 0.7rem; color: var(--accent-glow); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">Made by ss_shabu</div>
                 <h1>Student & Teacher Document Generator</h1>
                 <p>Professional Documents 2026</p>
             </header>
@@ -111,7 +129,7 @@
                     <div class="form-group">
                         <label for="student-school-select">School Name</label>
                         <select id="student-school-select" onchange="toggleCustomSchool(this, 'student-school')">
-                            <optgroup label="Universities & Colleges">
+                            <optgroup label="🇵🇭 Philippine Universities & Colleges">
                                 <option value="University of the Philippines">University of the Philippines</option>
                                 <option value="Ateneo de Manila University">Ateneo de Manila University</option>
                                 <option value="De La Salle University">De La Salle University</option>
@@ -122,7 +140,7 @@
                                 <option value="Silliman University">Silliman University</option>
                                 <option value="Mindanao State University">Mindanao State University</option>
                             </optgroup>
-                            <optgroup label="Secondary & Senior High Schools">
+                            <optgroup label="🇵🇭 Philippine Secondary & SHS">
                                 <option value="Mapua MCL Senior High School">Mapua MCL Senior High School</option>
                                 <option value="Philippine Science High School">Philippine Science High School</option>
                                 <option value="Ateneo de Manila Senior High School">Ateneo de Manila Senior High School</option>
@@ -134,6 +152,58 @@
                                 <option value="University of Santo Tomas Senior High School">University of Santo Tomas Senior High School</option>
                                 <option value="Quezon City Science High School">Quezon City Science High School</option>
                                 <option value="British School Manila">British School Manila</option>
+                            </optgroup>
+                            <optgroup label="🇺🇸 US Universities">
+                                <option value="Massachusetts Institute of Technology (MIT)">Massachusetts Institute of Technology (MIT)</option>
+                                <option value="Harvard University">Harvard University</option>
+                                <option value="Stanford University">Stanford University</option>
+                                <option value="Yale University">Yale University</option>
+                                <option value="Princeton University">Princeton University</option>
+                                <option value="California Institute of Technology (Caltech)">California Institute of Technology (Caltech)</option>
+                                <option value="Columbia University">Columbia University</option>
+                                <option value="Johns Hopkins University">Johns Hopkins University</option>
+                                <option value="University of Pennsylvania">University of Pennsylvania</option>
+                                <option value="Northwestern University">Northwestern University</option>
+                                <option value="University of California, Berkeley">University of California, Berkeley</option>
+                                <option value="University of California, Los Angeles (UCLA)">University of California, Los Angeles (UCLA)</option>
+                                <option value="University of Michigan">University of Michigan</option>
+                                <option value="University of Virginia">University of Virginia</option>
+                                <option value="Georgia Institute of Technology">Georgia Institute of Technology</option>
+                                <option value="University of North Carolina, Chapel Hill">University of North Carolina, Chapel Hill</option>
+                                <option value="University of California, San Diego">University of California, San Diego</option>
+                                <option value="University of Illinois Urbana-Champaign">University of Illinois Urbana-Champaign</option>
+                                <option value="University of Wisconsin-Madison">University of Wisconsin-Madison</option>
+                                <option value="University of Texas at Austin">University of Texas at Austin</option>
+                                <option value="Cornell University">Cornell University</option>
+                                <option value="University of Southern California (USC)">University of Southern California (USC)</option>
+                                <option value="Carnegie Mellon University">Carnegie Mellon University</option>
+                                <option value="University of Washington">University of Washington</option>
+                                <option value="New York University (NYU)">New York University (NYU)</option>
+                                <option value="University of Florida">University of Florida</option>
+                                <option value="Boston University">Boston University</option>
+                                <option value="University of California, Santa Barbara">University of California, Santa Barbara</option>
+                                <option value="University of California, Davis">University of California, Davis</option>
+                                <option value="University of California, Irvine">University of California, Irvine</option>
+                                <option value="University of Minnesota, Twin Cities">University of Minnesota, Twin Cities</option>
+                                <option value="University of Pittsburgh">University of Pittsburgh</option>
+                                <option value="Ohio State University">Ohio State University</option>
+                                <option value="University of Maryland, College Park">University of Maryland, College Park</option>
+                                <option value="Purdue University">Purdue University</option>
+                                <option value="University of Rochester">University of Rochester</option>
+                                <option value="University of Miami">University of Miami</option>
+                                <option value="University of Colorado Boulder">University of Colorado Boulder</option>
+                                <option value="University of Arizona">University of Arizona</option>
+                                <option value="University of Notre Dame">University of Notre Dame</option>
+                                <option value="University of Connecticut">University of Connecticut</option>
+                                <option value="University of Georgia">University of Georgia</option>
+                                <option value="University of Illinois Chicago">University of Illinois Chicago</option>
+                                <option value="Texas A&amp;M University">Texas A&amp;M University</option>
+                                <option value="University of Massachusetts Amherst">University of Massachusetts Amherst</option>
+                                <option value="Indiana University Bloomington">Indiana University Bloomington</option>
+                                <option value="University of California, Santa Cruz">University of California, Santa Cruz</option>
+                                <option value="University of Delaware">University of Delaware</option>
+                                <option value="University of Oregon">University of Oregon</option>
+                                <option value="Michigan State University">Michigan State University</option>
                             </optgroup>
                             <option value="Other">Other (Type manually)</option>
                         </select>
@@ -234,7 +304,7 @@
                         <div class="form-group">
                             <label for="teacher-school-select">School Name</label>
                             <select id="teacher-school-select" onchange="toggleCustomSchool(this, 'teacher-school')">
-                                <optgroup label="Universities & Colleges">
+                                <optgroup label="🇵🇭 Philippine Universities & Colleges">
                                     <option value="University of the Philippines">University of the Philippines</option>
                                     <option value="Ateneo de Manila University">Ateneo de Manila University</option>
                                     <option value="De La Salle University">De La Salle University</option>
@@ -245,7 +315,7 @@
                                     <option value="Silliman University">Silliman University</option>
                                     <option value="Mindanao State University">Mindanao State University</option>
                                 </optgroup>
-                                <optgroup label="Secondary & Senior High Schools">
+                                <optgroup label="🇵🇭 Philippine Secondary & SHS">
                                     <option value="Mapua MCL Senior High School">Mapua MCL Senior High School</option>
                                     <option value="Philippine Science High School">Philippine Science High School</option>
                                     <option value="Ateneo de Manila Senior High School">Ateneo de Manila Senior High School</option>
@@ -257,6 +327,58 @@
                                     <option value="University of Santo Tomas Senior High School">University of Santo Tomas Senior High School</option>
                                     <option value="Quezon City Science High School">Quezon City Science High School</option>
                                     <option value="British School Manila">British School Manila</option>
+                                </optgroup>
+                                <optgroup label="🇺🇸 US Universities">
+                                    <option value="Massachusetts Institute of Technology (MIT)">Massachusetts Institute of Technology (MIT)</option>
+                                    <option value="Harvard University">Harvard University</option>
+                                    <option value="Stanford University">Stanford University</option>
+                                    <option value="Yale University">Yale University</option>
+                                    <option value="Princeton University">Princeton University</option>
+                                    <option value="California Institute of Technology (Caltech)">California Institute of Technology (Caltech)</option>
+                                    <option value="Columbia University">Columbia University</option>
+                                    <option value="Johns Hopkins University">Johns Hopkins University</option>
+                                    <option value="University of Pennsylvania">University of Pennsylvania</option>
+                                    <option value="Northwestern University">Northwestern University</option>
+                                    <option value="University of California, Berkeley">University of California, Berkeley</option>
+                                    <option value="University of California, Los Angeles (UCLA)">University of California, Los Angeles (UCLA)</option>
+                                    <option value="University of Michigan">University of Michigan</option>
+                                    <option value="University of Virginia">University of Virginia</option>
+                                    <option value="Georgia Institute of Technology">Georgia Institute of Technology</option>
+                                    <option value="University of North Carolina, Chapel Hill">University of North Carolina, Chapel Hill</option>
+                                    <option value="University of California, San Diego">University of California, San Diego</option>
+                                    <option value="University of Illinois Urbana-Champaign">University of Illinois Urbana-Champaign</option>
+                                    <option value="University of Wisconsin-Madison">University of Wisconsin-Madison</option>
+                                    <option value="University of Texas at Austin">University of Texas at Austin</option>
+                                    <option value="Cornell University">Cornell University</option>
+                                    <option value="University of Southern California (USC)">University of Southern California (USC)</option>
+                                    <option value="Carnegie Mellon University">Carnegie Mellon University</option>
+                                    <option value="University of Washington">University of Washington</option>
+                                    <option value="New York University (NYU)">New York University (NYU)</option>
+                                    <option value="University of Florida">University of Florida</option>
+                                    <option value="Boston University">Boston University</option>
+                                    <option value="University of California, Santa Barbara">University of California, Santa Barbara</option>
+                                    <option value="University of California, Davis">University of California, Davis</option>
+                                    <option value="University of California, Irvine">University of California, Irvine</option>
+                                    <option value="University of Minnesota, Twin Cities">University of Minnesota, Twin Cities</option>
+                                    <option value="University of Pittsburgh">University of Pittsburgh</option>
+                                    <option value="Ohio State University">Ohio State University</option>
+                                    <option value="University of Maryland, College Park">University of Maryland, College Park</option>
+                                    <option value="Purdue University">Purdue University</option>
+                                    <option value="University of Rochester">University of Rochester</option>
+                                    <option value="University of Miami">University of Miami</option>
+                                    <option value="University of Colorado Boulder">University of Colorado Boulder</option>
+                                    <option value="University of Arizona">University of Arizona</option>
+                                    <option value="University of Notre Dame">University of Notre Dame</option>
+                                    <option value="University of Connecticut">University of Connecticut</option>
+                                    <option value="University of Georgia">University of Georgia</option>
+                                    <option value="University of Illinois Chicago">University of Illinois Chicago</option>
+                                    <option value="Texas A&amp;M University">Texas A&amp;M University</option>
+                                    <option value="University of Massachusetts Amherst">University of Massachusetts Amherst</option>
+                                    <option value="Indiana University Bloomington">Indiana University Bloomington</option>
+                                    <option value="University of California, Santa Cruz">University of California, Santa Cruz</option>
+                                    <option value="University of Delaware">University of Delaware</option>
+                                    <option value="University of Oregon">University of Oregon</option>
+                                    <option value="Michigan State University">Michigan State University</option>
                                 </optgroup>
                                 <option value="Other">Other (Type manually)</option>
                             </select>
@@ -387,6 +509,27 @@
     <script src="logos.js" defer></script>
     <script src="qrcode.min.js" defer></script>
     <script src="app.js" defer></script>
+    <script>
+        // Mobile toggle for responsive sidebar
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.getElementById('mobile-toggle');
+            const panel = document.querySelector('.control-panel');
+            if (toggle && panel) {
+                toggle.addEventListener('click', () => {
+                    panel.classList.toggle('open');
+                    toggle.classList.toggle('active');
+                });
+                // Close panel when clicking outside on mobile
+                document.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768 && panel.classList.contains('open') &&
+                        !panel.contains(e.target) && !toggle.contains(e.target)) {
+                        panel.classList.remove('open');
+                        toggle.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

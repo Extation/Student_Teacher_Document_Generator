@@ -10,12 +10,13 @@ def update_logos_js():
     with open(json_file, 'r', encoding='utf-8') as f:
         logos = json.load(f)
         
-    for filename in os.listdir(logos_dir):
-        if filename.endswith("_logo.png"):
-            name = filename.replace("_logo.png", "")
-            with open(os.path.join(logos_dir, filename), "rb") as img_file:
-                b64_string = base64.b64encode(img_file.read()).decode('utf-8')
-                logos[name] = f"data:image/png;base64,{b64_string}"
+    for root, _, files in os.walk(logos_dir):
+        for filename in files:
+            if filename.endswith("_logo.png"):
+                name = filename.replace("_logo.png", "")
+                with open(os.path.join(root, filename), "rb") as img_file:
+                    b64_string = base64.b64encode(img_file.read()).decode('utf-8')
+                    logos[name] = f"data:image/png;base64,{b64_string}"
                 
     with open(json_file, 'w', encoding='utf-8') as f:
         json.dump(logos, f, indent=4)
