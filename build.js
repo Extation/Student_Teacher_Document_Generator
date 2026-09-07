@@ -14,6 +14,8 @@ async function build() {
     console.log('Copying static assets...');
     await fs.copy(path.join(__dirname, 'index.html'), path.join(distDir, 'index.html'));
     await fs.copy(path.join(__dirname, 'style.css'), path.join(distDir, 'style.css'));
+    await fs.copy(path.join(__dirname, 'logos.js'), path.join(distDir, 'logos.js'));
+    await fs.copy(path.join(__dirname, 'qrcode.min.js'), path.join(distDir, 'qrcode.min.js'));
     await fs.copy(path.join(__dirname, 'school_logos'), path.join(distDir, 'school_logos'));
 
     // 3. Obfuscate app.js
