@@ -1033,6 +1033,13 @@ async function fetchLogoFromWikipedia(wikiTitle) {
     }
 }
 
+// Alias map: UNIVERSITY_LOGOS key → LOGO_DATA key (for mismatched filenames)
+const LOGO_KEY_ALIASES = {
+    MSU_PH:   'MSU',
+    MapuaMCL: 'Mapua',
+    USTSHS:   'USTSHS',
+};
+
 function handleSchoolNameLogoSync(stateKey, value) {
     if (!value) return;
     const valLower = value.toLowerCase();
@@ -1051,8 +1058,12 @@ function handleSchoolNameLogoSync(stateKey, value) {
 
     // Use local LOGO_DATA for all schools (PH and US)
     if (matchedKey) {
-        if (typeof LOGO_DATA !== 'undefined' && LOGO_DATA[matchedKey]) {
-            state[stateKey] = LOGO_DATA[matchedKey];
+        // Resolve alias if key doesn't directly exist in LOGO_DATA
+        const logoKey = (typeof LOGO_DATA !== 'undefined' && LOGO_DATA[matchedKey])
+            ? matchedKey
+            : (LOGO_KEY_ALIASES[matchedKey] || matchedKey);
+        if (typeof LOGO_DATA !== 'undefined' && LOGO_DATA[logoKey]) {
+            state[stateKey] = LOGO_DATA[logoKey];
         }
     }
 
